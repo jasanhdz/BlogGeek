@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "creación de un blog usando firebase react y webpack",
   "main": "webpack.config.js",
+  "homepage": "https://jasanhdz.github.io/BlogGeek/src/htmls/",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:dev:server": "webpack-dev-server --config ./webpack.dev.config.js",
