@@ -1,0 +1,94 @@
+.Item.Developer {
+  text-align: center;
+}
+
+.FooterContainer {
+  background-color: #126798;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* height: 270px; */
+}
+
+.Footer {
+  padding: 30px 20px;
+  width: 1000px;
+  display: inherit;
+  color: white;
+  justify-content: space-around;
+  /* border: 2px solid black; */
+}
+
+.Item {
+  /* border: 1px solid red; */
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  justify-content: center;
+}
+
+
+.Item.Form {
+  width: 300px;
+  border-left: 1px solid white;
+  padding-left: 60px;
+}
+
+.Form-group {
+  display: inherit;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px 5px;
+}
+
+.Form-group input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+  box-shadow: inset 0 -0.2em rgb(0, 0, 0, .4);
+  outline: 0;
+}
+
+/* .btnPrimary {
+  background: #7acc2d;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  transition: 0.5s;
+  padding: 10px 15px;
+  max-width: 120px;
+  text-align: center;
+  border-radius: 6px;
+} */
+
+@media screen and (max-width: 768px) {
+  .Footer {
+    flex-wrap: wrap;
+  }
+  .Item.Form {
+    border-left: none;
+    padding-left: 0;
+  }
+  .btnPrimary {
+    align-self: center;
+  }
+}
+
+
+.Checklist-form {
+  padding: 10px;
+}
+
+.Checklist-form input {
+  margin-right: 5px;
+  margin-bottom: 10px;
+}
+
+.Item.Comentarios label, textarea {
+  margin-bottom: 20px;
+}
+
+textarea {
+  background-color: #14232b75;
+  color: white;
+}

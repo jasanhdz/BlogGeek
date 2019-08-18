@@ -1,0 +1,150 @@
+.Header-container {
+  background-color:#126798;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.Header {
+  min-height: 200px;
+  max-width: 1100px;
+  display: inherit;
+  align-items: center;
+  flex-wrap: wrap;
+  /* border: 1px solid red;  */
+  /* justify-content: space-between; */
+}
+
+.Header-logotipo {
+  margin-left: 0;
+}
+
+.Header-logotipo img {
+  border-right-style: solid;
+  border-width: 2px;
+  border-color: #fff;
+  border-radius: 60%;
+  min-height: 140px;
+  padding: 20px;
+  width: 140px;
+  transition: 0.6s;
+}
+
+.Header-info {
+  max-width: 500px;
+  /* border: 1px solid yellow; */
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  height: inherit;
+  justify-self: initial;  
+  margin-right: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Header-info h3 {
+  color: black;
+}
+
+.Header-avatar img {
+  border-radius: 60%;
+  height: 80px;
+  width: 80px;
+  transition: 0.6s;
+  /* transform: translateY(100px); */
+}
+
+.Header-avatar {
+  margin-left: 80px;  
+}
+
+.btnPrimary {
+  background: #7acc2d;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  transition: 0.5s;
+  padding: 10px 15px;
+  max-width: 120px;
+  text-align: center;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.Menu-container {
+  display: flex;
+  background-color: #219cca;
+  width: 100%;
+  justify-content: center;
+  height: 50px;
+  box-shadow: 0 8px 10px rgba(0,0,0,0.5);
+}
+
+.Menu {
+  display: inherit;
+  width: 700px;
+  height: inherit;
+  align-items: center;
+}
+
+.Menu ul {
+  padding: 0 20px;
+  height: inherit;
+  /* border: 1px solid red; */
+  justify-content: center;
+  display: inherit;
+  padding: 0;
+}
+
+.Menu li {
+  align-items: center;
+  text-decoration: none;
+  display: flex;
+  justify-content: inherit;
+  height: inherit;
+  cursor: pointer;
+  /* border: 1px solid red; */
+  width: 100%;
+  color: white;
+  /* font-weight: bold; */
+}
+
+.Menu ul:hover {
+  background-color: #103a52;
+}
+
+@media screen and (max-width: 768px) {
+  .Header {
+    justify-content: center;
+  }
+  .Header-info {
+    margin-right: 0;
+    height: auto;
+  }
+  .Header-avatar {
+    margin-left: 0;
+  }
+  .Header-info, .Header-info h3, .Header-avatar {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-right: 0;
+  }
+  .Header-info h2 {
+    margin: 0;
+  }
+  .Header-logotipo {
+    max-height: 147px;
+  }
+  .Menu {
+    flex-wrap: wrap;
+    height: auto;
+  }
+  .Menu ul {
+    margin: 0;
+    padding: 10px 0;
+  }
+  .Menu-container {
+    height: auto;
+  }
+}
