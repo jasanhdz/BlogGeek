@@ -18,7 +18,7 @@ module.exports = (env) => {
       index: ['babel-polyfill', path.resolve(__dirname, 'src/entries/index.js')],
     },
     output: {
-      filename: 'js/[name].js',
+      filename: 'js/[name][hash].js',
       path: path.resolve(__dirname, 'dist'),
       publicPath: path.resolve(__dirname, 'dist')+'/',
       chunkFilename: 'js/[id].[chunkhash].js',
