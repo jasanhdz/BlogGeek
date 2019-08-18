@@ -9,6 +9,7 @@ import Modal from '../widgets/components/modal.jsx';
 class Home extends Component {
   state = {
     modalVisibility: false,
+    focusActive: null,
   }
   handleClick = event => {
     this.setState({
@@ -20,6 +21,19 @@ class Home extends Component {
     this.setState({
       modalVisibility: false
     })
+  }
+  handleFocus = event => {
+    this.setState({
+      focusActive: 'Labelactive'
+    })
+  }
+  removeFocus = eveten => {
+    this.setState({
+      focusActive: null,
+    })
+  }
+  clickOverlay = event => {
+    this.closeModal();
   }
   componentDidMount() {
     console.log('modal', this.state.modalVisibility);
@@ -35,6 +49,10 @@ class Home extends Component {
           <ModalContainer>
             <Modal 
               closeModal={this.closeModal}
+              handleFocus={this.handleFocus}
+              focusActive={this.state.focusActive}
+              removeFocus={this.removeFocus}
+              handleClick={this.clickOverlay}
             />
           </ModalContainer>
         }

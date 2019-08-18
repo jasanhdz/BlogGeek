@@ -41,6 +41,7 @@
   margin-right: 40px;
   display: flex;
   flex-direction: column;
+  padding: 0 20px;
 }
 
 .Header-info h3 {
@@ -85,6 +86,7 @@
   width: 700px;
   height: inherit;
   align-items: center;
+  justify-content: space-evenly;
 }
 
 .Menu ul {
@@ -116,10 +118,14 @@
 @media screen and (max-width: 768px) {
   .Header {
     justify-content: center;
+    padding-top: 20px;
   }
   .Header-info {
     margin-right: 0;
     height: auto;
+    padding: 0 10px;
+    margin-top: 10px;
+
   }
   .Header-avatar {
     margin-left: 0;
@@ -134,7 +140,8 @@
     margin: 0;
   }
   .Header-logotipo {
-    max-height: 147px;
+    max-height: 130px;
+    max-width: 130px;
   }
   .Menu {
     flex-wrap: wrap;
@@ -146,5 +153,18 @@
   }
   .Menu-container {
     height: auto;
+  }
+  .Header-logotipo {
+    margin: 0;
+    border-top-style: solid;
+    border-width: 2px;
+    border-color: #fff;
+    border-radius: 60%;
+    padding: 10px;
+  }
+  .Header-logotipo img {
+    width: 100%;
+    height: 100%;
+    padding: 0;
   }
 }
