@@ -20,15 +20,15 @@ module.exports = (env) => {
     output: {
       filename: 'js/[name][hash].js',
       path: path.resolve(__dirname, 'dist'),
-      publicPath: path.resolve(__dirname, 'dist')+'/',
+      publicPath: path.resolve(__dirname, '/dist/'),
       chunkFilename: 'js/[id].[chunkhash].js',
     },
-    devServer: {
-      port: 9000,
-      publicPath: path.resolve(__dirname, '/'),
-      contentBase: path.join(__dirname, '/dist/'),
-      open: true,
-    },
+    // devServer: {
+    //   port: 9000,
+    //   publicPath: path.resolve(__dirname, '/'),
+    //   contentBase: path.join(__dirname, '/dist/'),
+    //   open: true,
+    // },
     module: {
       rules: [
         {
@@ -56,6 +56,9 @@ module.exports = (env) => {
                 //   minimize: true,
                 //   modules: true
                 // }
+              },
+              {
+                loader: "resolve-url-loader"
               }
             ]
           })
@@ -63,13 +66,18 @@ module.exports = (env) => {
         {
           test: /\.(jpg|png|gif|svg)$/,
           exclude: /(node_modules|bower_components)/,
-          use: {
-            loader: 'url-loader',
-            options: {
-              limit: 10000,
-              name: 'images/[name].[hash].[ext]'
-            }
-          }
+          use: [
+            {
+              loader: 'url-loader',
+                options: {
+                  limit: 10000,
+                  name: 'images/[name].[hash].[ext]'
+                }
+            },
+            // {
+            //   loader: "resolve-url-loader"
+            // }
+        ]
         }
       ]
     },
