@@ -1,6 +1,5 @@
 import React from 'react';
 import './modal.css';
-import Logo from '../../../fonts/facebook-brands.svg';
 
 function ModalLogin(props) {
   return (
@@ -13,30 +12,23 @@ function ModalLogin(props) {
             <h4>Empieza ahora</h4>
           </div>
 
-          <form onSubmit={props.handleSubmit} action="POST" className="col">
+          <form onSubmit={props.handleSubmitRegistry} action="POST" className="col">
             <div className="modal-form-group">
-              <label
-                className={props.focusActive}
-                htmlFor="Email"
-              >Email
-                </label>
+              <label className={props.focusActive} htmlFor="Nombres">Nombres</label>
+              <input ref={props.setRefEmail} onFocus={props.handleFocus} onBlur={props.removeFocus} type="text" />
+
+              <label className={props.focusActive} htmlFor="Email">Email</label>
               <input ref={props.setRefEmail} onFocus={props.handleFocus} onBlur={props.removeFocus} type="email" />
+
               <label className={props.focusActive} htmlFor="Password">Password</label>
               <input ref={props.setRefPass} onFocus={props.handleFocus} onBlur={props.removeFocus} type="password" name="password" id="" />
-              <button onSubmit={props.handleSubmit} className="formButton" type="submit">Iniciar sesión</button>
-              <div className="social">
-                <p>Ingresa con:</p>
-                <div className="Icons">
-                  <a className="Icon fab fa-facebook"></a>
-                  <a className="Icon fab fa-github"></a>
-                  <a className="Icon fab fa-twitter"></a>
-                </div>
-              </div>
+              
+              <button onSubmit={props.handleSubmitRegistry} className="formButton" type="submit">Registrarse</button>
             </div>
           </form>
 
           <div className="col">
-            <button onClick={props.handleModalRegistry} className="formButton btncenter">Crear una cuenta</button>
+            <button onClick={props.handleLogin} className="formButton btncenter">Iniciar Sesión</button>
           </div>
           <button
             onClick={props.closeModal}
