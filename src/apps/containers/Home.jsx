@@ -25,15 +25,16 @@ class Home extends Component {
 
   authAcoundGoogle() {
     const provider = new firebase.auth.GoogleAuthProvider();
-
+    
     firebase.auth().signInWithPopup(provider)
     .then(result => {
         this.setState({
           uriProfile: result.user.photoURL,
           modalVisibility: false,
-          user: result.displayName
+          user: result.user.displayName
         })
-        alert(`Welcome ${this.state.user}, usamos el servicio de google`);
+        
+        console.log(result.user.displayName, 'usuarioLogin');
     })
     .catch(error => {
       console.error(error);
@@ -155,7 +156,10 @@ class Home extends Component {
       alert(`Saliste de la aplicación sin ninguna problema`);
       this.setState({
         ImgProfile: false,
+        uriProfile: null,
+        user: null
       })
+      console.log(this.state.user);
     })
     .catch(error => {
       alert(`Error al intentar salir de la aplicación ${error}`);
@@ -211,7 +215,7 @@ class Home extends Component {
         <Header 
           handleClick={this.handleClick}
           signOutClick={this.signOutClick}
-          imgProfile={this.state.ImgProfile}
+          ImgProfile={this.state.uriProfile}
           user={this.state.user}
         />
         {

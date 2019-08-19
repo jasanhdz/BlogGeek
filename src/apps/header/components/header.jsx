@@ -4,6 +4,19 @@ import avatarLogout from '../../../assets/usuario.png';
 import avatarLogin from '../../../assets/perfil.jpg';
 import Welcome from './welcome.jsx';
 import './menu.css';
+
+function PayloadImageProfile(uri, user) {
+  if (uri) {
+    return<img src={uri} alt=""/>
+  }
+  else if (!uri && user) {
+    return <img src={avatarLogin} alt=""/>
+  }
+  else {
+    return <img src={avatarLogout} alt=""/>
+  }
+}
+
 const Header = props => {
   console.log(props.user)
   return (
@@ -25,9 +38,7 @@ const Header = props => {
           }
         </div>
         <figure onClick={props.signOutClick} className="Header-avatar">
-          {
-            props.imgProfile ? <img src={avatarLogin} alt=""/> : <img src={avatarLogout} alt="imgProfile"/>
-          }
+          {PayloadImageProfile(props.ImgProfile, props.user)}
         </figure>
       </div>
       <div className="Menu-container">
