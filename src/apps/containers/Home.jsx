@@ -23,7 +23,7 @@ class Home extends Component {
   // **** Servicios de Autenticación ****
   // Autentication for Google
 
-  authAcoundGoogle() {
+  authAccoundGoogle() {
     const provider = new firebase.auth.GoogleAuthProvider();
     
     firebase.auth().signInWithPopup(provider)
@@ -41,6 +41,29 @@ class Home extends Component {
       alert('Error al authenticarce con Google');
     })
   }
+
+  // Auntenticación con Facebook 
+  authAccoundFacebook() {
+    const provider = new firebase.auth.FacebookAuthProvider();
+
+    firebase.auth().signInWithPopup(provider)
+    .then(result => {
+      this.setState({
+        uriProfile: result.user.photoURL,
+        modalVisibility: false,
+        user: result.user.displayName
+      })
+
+      console.log(result.user, 'usuarioLogin');
+    })
+
+    .catch(error => {
+      console.error(error);
+      alert('Error al authenticarce con Facebook');
+    })
+  }
+
+
   // Autenticación con Email y Password
   autEmailPass(email, password) {
     firebase.auth().signInWithEmailAndPassword(email, password)
@@ -166,9 +189,13 @@ class Home extends Component {
     })
   }
 
-  loginWhitGoogle = event => {
-    this.authAcoundGoogle()
+  loginWithGoogle = event => {
+    this.authAccoundGoogle()
     console.log('vamos')
+  }
+
+  loginWithFacebook = event => {
+    this.authAccoundFacebook();
   }
 
   login = () => {
@@ -185,7 +212,8 @@ class Home extends Component {
               setRefEmail={this.refInputValueEmailLogin}
               setRefPass={this.refInputValuePasswordLogin}
               handleModalRegistry={this.handleClickRegistry}
-              loginwhitGoogle={this.loginWhitGoogle}
+              loginwhitGoogle={this.loginWithGoogle}
+              loginWithFacebook={this.loginWithFacebook}
             />
         </ModalContainer>
       )

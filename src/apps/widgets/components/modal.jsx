@@ -27,7 +27,7 @@ function ModalLogin(props) {
               <div className="social">
                 <p>Ingresa con:</p>
                 <div className="Icons">
-                  <a className="Icon fab fa-facebook"></a>
+                  <a onClick={props.loginWithFacebook} className="Icon fab fa-facebook"></a>
                   <a className="Icon fab fa-github"></a>
                   <a className="Icon fab fa-twitter"></a>
                   <a onClick={props.loginwhitGoogle} className="Icon fab fa-google"></a>
