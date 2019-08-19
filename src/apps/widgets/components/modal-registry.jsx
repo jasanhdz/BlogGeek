@@ -15,7 +15,7 @@ function ModalLogin(props) {
           <form onSubmit={props.handleSubmitRegistry} action="POST" className="col">
             <div className="modal-form-group">
               <label className={props.focusActive} htmlFor="Nombres">Nombres</label>
-              <input ref={props.setRefEmail} onFocus={props.handleFocus} onBlur={props.removeFocus} type="text" />
+              <input ref={props.setRefNames} onFocus={props.handleFocus} onBlur={props.removeFocus} type="text" />
 
               <label className={props.focusActive} htmlFor="Email">Email</label>
               <input ref={props.setRefEmail} onFocus={props.handleFocus} onBlur={props.removeFocus} type="email" />
@@ -23,7 +23,7 @@ function ModalLogin(props) {
               <label className={props.focusActive} htmlFor="Password">Password</label>
               <input ref={props.setRefPass} onFocus={props.handleFocus} onBlur={props.removeFocus} type="password" name="password" id="" />
               
-              <button onSubmit={props.handleSubmitRegistry} className="formButton" type="submit">Registrarse</button>
+              <button onSubmit={props.handleSubmitRegistry} className="formButton" type="submit">Guardar</button>
             </div>
           </form>
 

@@ -1,6 +1,14 @@
 class Autentication {
   autEmailPass(email, password) {
-
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    .then(result => {
+      if(result.user.emailVerified) {
+        alert(`Bienvenido ${result.user.displayName}`);
+      } else {
+        firebase.auth().signOut();
+        alert(`Por favor realiza la verificación de la cuenta`)
+      }
+    })
   }
 
   crearAcountEmailPass(email, passsword, names) {

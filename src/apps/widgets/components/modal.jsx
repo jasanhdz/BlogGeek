@@ -38,6 +38,7 @@ function ModalLogin(props) {
           <div className="col">
             <button onClick={props.handleModalRegistry} className="formButton btncenter">Crear una cuenta</button>
           </div>
+          
           <button
             onClick={props.closeModal}
             className="Modal-close"

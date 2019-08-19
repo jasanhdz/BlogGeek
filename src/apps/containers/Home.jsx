@@ -5,7 +5,7 @@ import Publications from '../publications/containers/publications.jsx';
 import Footer from '../footer/components/footer.jsx';
 import ModalContainer from '../widgets/containers/modal.jsx';
 import Modal from '../widgets/components/modal.jsx';
-import Autentication from '../../Firebase/auth/authentication';
+// import Autentication from '../../Firebase/auth/authentication';
 import ModaRegistry from '../widgets/components/modal-registry.jsx';
 
 class Home extends Component {
@@ -13,8 +13,57 @@ class Home extends Component {
     modalVisibility: false,
     focusActive: null,
     registry: false,
-    login: true
+    login: true,
+    ImgProfile: false,
+    user: null
   }
+
+// Métodos para acceder a los Servicios de Firebase
+  // **** Servicios de Autenticación ****
+  autEmailPass(email, password) {
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    .then(result => {
+      if(result.user.emailVerified) {
+        // alert(`Bienvenido ${result.user.displayName}`);
+        this.setState({
+          ImgProfile: true,
+          user: result.user.displayName,
+          modalVisibility: false
+        })
+      } else {
+        firebase.auth().signOut();
+        alert(`Por favor realiza la verificación de la cuenta`)
+      }
+    })
+  }
+  crearAcountEmailPass(email, passsword, names) {
+    firebase.auth().createUserWithEmailAndPassword(email, passsword) 
+    .then(result => {
+      result.user.updateProfile({
+        displayName: names
+      })
+
+      const configuration = {
+        url : 'http://localhost:9000/'
+      }
+
+      result.user.sendEmailVerification(configuration)
+      .catch(error => {
+        console.error(error);
+        alert(error.message, 4000);
+      })
+      
+      firebase.auth().signOut();
+
+      alert(`Bienvenido ${names} debes realizar el proceso de verification.`);
+
+    })
+    .catch(error => {
+      console.error(error);
+      alert(error.message, 4000);
+    })
+  }
+
   handleClick = event => {
     this.setState({
       modalVisibility: true
@@ -48,19 +97,19 @@ class Home extends Component {
   refInputValuePasswordLogin = event => {
     this.inputLoginPassword = event;
   }
-  onSubmit = event => {
-    event.preventDefault();
-    this.email = this.inputLoginEmail.value;
-    this.password = this.inputLoginPassword.value;
-    console.log(this.password, 'encriptado!');
-    const auth = new Autentication();
-    auth.crearAcountEmailPass(this.email, this.password, 'Jasanhdz');
-  }
   handleSubmitRegistry = event => {
     event.preventDefault();
     this.email = this.inputLoginEmail.value;
     this.names = this.inputLoginNames.value;
     this.password = this.inputLoginPassword.value;
+    console.log(this.password, 'encriptado!');
+    this.crearAcountEmailPass(this.email, this.password, this.names);
+  }
+  onSubmit = event => {
+    event.preventDefault();
+    this.email = this.inputLoginEmail.value;
+    this.password = this.inputLoginPassword.value;
+    this.autEmailPass(this.email, this.password);
   }
 
   handleClickRegistry = event => {
@@ -74,6 +123,19 @@ class Home extends Component {
     this.setState({
       registry: false,
       login: true
+    })
+  }
+
+  signOutClick = event => {
+    firebase.auth().signOut()
+    .then(result => {
+      alert(`Saliste de la aplicación sin ninguna problema`);
+      this.setState({
+        ImgProfile: false,
+      })
+    })
+    .catch(error => {
+      alert(`Error al intentar salir de la aplicación ${error}`);
     })
   }
 
@@ -107,7 +169,7 @@ class Home extends Component {
               handleClick={this.clickOverlay}
               setRefEmail={this.refInputValueEmailLogin}
               setRefPass={this.refInputValuePasswordLogin}
-              setRefPass={this.refInputValueNamesLogin}
+              setRefNames={this.refInputValueNamesLogin}
               handleLogin={this.handleClickLogin}
             />
         </ModalContainer>
@@ -119,6 +181,9 @@ class Home extends Component {
       <HomeLayout>
         <Header 
           handleClick={this.handleClick}
+          signOutClick={this.signOutClick}
+          imgProfile={this.state.ImgProfile}
+          user={this.state.user}
         />
         {
           this.state.modalVisibility && this.login()
