@@ -30,6 +30,7 @@ function ModalLogin(props) {
                   <a className="Icon fab fa-facebook"></a>
                   <a className="Icon fab fa-github"></a>
                   <a className="Icon fab fa-twitter"></a>
+                  <a onClick={props.loginwhitGoogle} className="Icon fab fa-google"></a>
                 </div>
               </div>
             </div>

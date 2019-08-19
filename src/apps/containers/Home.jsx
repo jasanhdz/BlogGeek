@@ -15,11 +15,32 @@ class Home extends Component {
     registry: false,
     login: true,
     ImgProfile: false,
-    user: null
+    user: null,
+    uriProfile: null 
   }
 
 // Métodos para acceder a los Servicios de Firebase
   // **** Servicios de Autenticación ****
+  // Autentication for Google
+
+  authAcoundGoogle() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+    firebase.auth().signInWithPopup(provider)
+    .then(result => {
+        this.setState({
+          uriProfile: result.user.photoURL,
+          modalVisibility: false,
+          user: result.displayName
+        })
+        alert(`Welcome ${this.state.user}, usamos el servicio de google`);
+    })
+    .catch(error => {
+      console.error(error);
+      alert('Error al authenticarce con Google');
+    })
+  }
+  // Autenticación con Email y Password
   autEmailPass(email, password) {
     firebase.auth().signInWithEmailAndPassword(email, password)
     .then(result => {
@@ -36,6 +57,7 @@ class Home extends Component {
       }
     })
   }
+  /******* Crear Cuenta con Email y Password *******/
   crearAcountEmailPass(email, passsword, names) {
     firebase.auth().createUserWithEmailAndPassword(email, passsword) 
     .then(result => {
@@ -63,6 +85,7 @@ class Home extends Component {
       alert(error.message, 4000);
     })
   }
+
 
   handleClick = event => {
     this.setState({
@@ -139,6 +162,11 @@ class Home extends Component {
     })
   }
 
+  loginWhitGoogle = event => {
+    this.authAcoundGoogle()
+    console.log('vamos')
+  }
+
   login = () => {
     if(this.state.login) {
       return (
@@ -153,6 +181,7 @@ class Home extends Component {
               setRefEmail={this.refInputValueEmailLogin}
               setRefPass={this.refInputValuePasswordLogin}
               handleModalRegistry={this.handleClickRegistry}
+              loginwhitGoogle={this.loginWhitGoogle}
             />
         </ModalContainer>
       )
