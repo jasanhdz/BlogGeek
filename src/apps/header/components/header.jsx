@@ -50,7 +50,7 @@ const Header = props => {
             <li>Mis Post</li>
           </ul>
           <ul>
-            <li>Realizar un Post</li>
+            <li onClick={props.modalPostOnChange} >Realizar un Post</li>
           </ul>
           <ul>
             <li>Contactenos</li>

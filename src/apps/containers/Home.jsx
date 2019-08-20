@@ -1,15 +1,18 @@
 import React, {Component} from 'react';
 import HomeLayout from '../components/home-layout.jsx';
 import Header from '../header/components/header.jsx';
-import Publications from '../publications/containers/publications.jsx';
+import PublicationsLayout from '../publications/components/publications-layout.jsx';
 import Footer from '../footer/components/footer.jsx';
 import ModalContainer from '../widgets/containers/modal.jsx';
 import Modal from '../widgets/components/modal.jsx';
+import Post from '../publications/containers/post.jsx';
 // import Autentication from '../../Firebase/auth/authentication';
 import ModaRegistry from '../widgets/components/modal-registry.jsx';
+import PostModal from '../widgets/components/modal-post.jsx';
 
 class Home extends Component {
   state = {
+    modalPostActive: false,
     modalVisibility: false,
     focusActive: null,
     registry: false,
@@ -142,6 +145,13 @@ class Home extends Component {
       alert('No tenemos niguna sesión actualmente!');
     }
   }
+  modalPostOnChange = e => {
+    this.setState({
+      modalPostActive: true,
+      login: false,
+      modalVisibility: true
+    })
+  }
   handleClick = event => {
     this.setState({
       modalVisibility: true
@@ -272,6 +282,15 @@ class Home extends Component {
         </ModalContainer>
       )
     }
+    if(this.state.modalPostActive) {
+      return (
+        <ModalContainer>
+          <PostModal 
+            closeModal={this.closeModal}
+          />
+        </ModalContainer>
+      )
+    }
   }
   render() {
     return (
@@ -282,11 +301,14 @@ class Home extends Component {
           ImgProfile={this.state.uriProfile}
           user={this.state.user}
           Signout={this.Signout}
+          modalPostOnChange={this.modalPostOnChange}
         />
         {
           this.state.modalVisibility && this.login()
         }
-        <Publications />
+        <PublicationsLayout>
+          <Post />
+        </PublicationsLayout>
         <Footer />
       </HomeLayout>
     )
