@@ -1,5 +1,5 @@
 import React from 'react';
-// import './modal.css';
+import './modal-post.css';
 
 const ModalPost = props => {
   return (
@@ -7,14 +7,14 @@ const ModalPost = props => {
       
       <div className="Modal">
         
-        <div className="Wrapper">
-          <div className="col">
+        <div className="post-container">
+          <div className="post-col-one">
             <h2>Bienvenido al VideoBlog Geek</h2>
             <h3>Publica, aprende y conecta con otros por medio de videos Geek.</h3>
             <h4>Empieza ahora</h4>
           </div>
 
-          <form onSubmit={props.handleSubmitRegistry} action="POST" className="col">
+          <form onSubmit={props.handleSubmitRegistry} action="POST" className="post-col-two">
             {/* Titulos */}
             <div className="form-group">
               <label className={props.focusActive} htmlFor="Title">Titulo</label>
