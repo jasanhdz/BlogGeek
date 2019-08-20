@@ -1,6 +1,7 @@
 import React from 'react';
 import './post.css';
-
+import PostLayout from '../components/post-layout.jsx';
+import Article from '../components/article.jsx';
 class Post extends React.Component {
   constructor() {
     super()
@@ -39,9 +40,9 @@ class Post extends React.Component {
   }
   render() {
     return (
-      <div className="Post">
-        <h1>Publicaciones de la comunidad!!!</h1>
-      </div>
+      <PostLayout>
+        <Article />
+      </PostLayout>
     )
   }
 }

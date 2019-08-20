@@ -3,7 +3,7 @@ import './publications-layout.css'
 const LayoutPublications = props => {
   return (
     <div className="Publications-Container">
-      {props.children}
+        {props.children}
     </div>
   )
 }
