@@ -34,7 +34,7 @@ const Header = props => {
               onClick={props.handleClick} 
               id="btnLogin"
             >Iniciar Sesión
-            </a> : <Welcome user={props.user} />
+            </a> : <Welcome Signout={props.Signout} user={props.user} />
           }
         </div>
         <figure onClick={props.signOutClick} className="Header-avatar">

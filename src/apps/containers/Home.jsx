@@ -110,7 +110,38 @@ class Home extends Component {
     })
   }
 
+  // Observador del cambio de Sesión en el browser
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      if(user) {
+        console.log('existe un usuario');
+        console.log(user.photoURL, 'aqui.....');
+        if(user.photoURL) {
+            this.setState({
+              uriProfile: user.photoURL,
+              user: user.displayName
+            })
+        } 
+      }
+    })
+  }
 
+  // Llamamos a la función Salir de sesión desde el botón SignOut que se carga al hacer Login.
+  Signout = event => {
+    const user = firebase.auth().currentUser;
+    if(user) {
+      return firebase.auth().signOut().then(() => {
+        this.setState({
+          ImgProfile: false,
+          uriProfile: null,
+          user: null
+        })
+        alert(`Salimos de la sesión correctamente!`);
+      })
+    } else {
+      alert('No tenemos niguna sesión actualmente!');
+    }
+  }
   handleClick = event => {
     this.setState({
       modalVisibility: true
@@ -174,19 +205,24 @@ class Home extends Component {
   }
 
   signOutClick = event => {
-    firebase.auth().signOut()
-    .then(result => {
-      alert(`Saliste de la aplicación sin ninguna problema`);
-      this.setState({
-        ImgProfile: false,
-        uriProfile: null,
-        user: null
+    const user = firebase.auth().currentUser;
+    if(user) {
+      firebase.auth().signOut()
+      .then(result => {
+        alert(`Saliste de la aplicación sin ninguna problema`);
+        this.setState({
+          ImgProfile: false,
+          uriProfile: null,
+          user: null
+        })
+        console.log(this.state.user);
       })
-      console.log(this.state.user);
-    })
-    .catch(error => {
-      alert(`Error al intentar salir de la aplicación ${error}`);
-    })
+      .catch(error => {
+        alert(`Error al intentar salir de la aplicación ${error}`);
+      })
+    } else {
+      alert('No haz iniciado sesión!');
+    }
   }
 
   loginWithGoogle = event => {
@@ -245,6 +281,7 @@ class Home extends Component {
           signOutClick={this.signOutClick}
           ImgProfile={this.state.uriProfile}
           user={this.state.user}
+          Signout={this.Signout}
         />
         {
           this.state.modalVisibility && this.login()

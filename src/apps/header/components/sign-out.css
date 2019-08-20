@@ -1,0 +1,45 @@
+.Signout {
+  width: 100%;
+  margin: 5px;
+  display: inline-flex;
+  height: 30px;
+}
+
+.Signout button {
+  width: inherit;
+  border: none;
+  border-radius: 6px;
+  background-color: #7acc2d;
+  color: white;
+  
+  box-shadow: inset 0 -0.2em rgb(0, 0, 0, .2);
+  outline: 0;
+  transition: .2s;
+  will-change: transform;
+  cursor: pointer;
+}
+
+.Signout button:active {
+  animation-name: toggle;
+  animation-timing-function: ease-out;
+  animation-duration: .8s;
+  /* animation-fill-mode: forwards; */
+}
+
+@keyframes toggle {
+  0% {
+    transform: scale(.8, .8)
+  }
+  30% {
+    transform: scale(.7, .7)
+  }
+  50% {
+    transform: scale(.7, .7)
+  }
+  80% {
+    transform: scale(.8, .8)
+  }
+  100% {
+    transform: scale(.9, .9)
+  }
+}
