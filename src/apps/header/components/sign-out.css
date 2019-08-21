@@ -43,3 +43,12 @@
     transform: scale(.9, .9)
   }
 }
+
+@media screen and (max-width:500px) {
+  .Signout {
+    height: 100%;
+  }
+  .Signout button {
+    height: 40px;
+  }
+}

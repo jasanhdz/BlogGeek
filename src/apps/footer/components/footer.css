@@ -48,18 +48,22 @@
   border-bottom: 1px solid white;
   box-shadow: inset 0 -0.2em rgb(0, 0, 0, .4);
   outline: 0;
+  font-size: 1.5em;
+  text-align: center;
+  font-family: sans-serif;
+  font-weight: 530;
 }
 
-/* .btnPrimary {
-  background: #7acc2d;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: bold;
-  transition: 0.5s;
-  padding: 10px 15px;
-  max-width: 120px;
+.Form-group label {
+  font-size: 1.5em;
   text-align: center;
-  border-radius: 6px;
-} */
+}
+
+.btnPrimary:active {
+  animation-name: toggle;
+  animation-timing-function: ease-out;
+  animation-duration: .8s;
+}
 
 @media screen and (max-width: 768px) {
   .Footer {
@@ -91,4 +95,48 @@
 textarea {
   background-color: #14232b75;
   color: white;
+}
+
+@media screen and (max-width:392px) {
+  .Footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+@media screen and (max-width:350px) {
+  .Item.Form {
+    width: auto;
+    align-items: center;
+  }
+  .Form-group {
+    padding-left: 0;
+    margin-left: 0;
+    width: 90%;
+    align-items: center;
+    align-self: center;
+  }
+  .Form-group label, .Form-group input {
+    width: 90%;
+    font-size: 1.2em;
+  }
+  .Checklist-form {
+    text-align: center;
+  }
+  .Item.Comentarios label {
+    /* text-align: center; */
+    color: #0d212d;
+    font-size: 1.1em;
+    text-decoration: underline;
+    font-weight: bold;
+    /* padding-left: 20px; */
+  }
+  textarea {
+    width: 210px;
+    height: 150px;
+  }
+  .btnPrimary {
+    max-width: 100%;
+    width: 83%;
+  }
 }
