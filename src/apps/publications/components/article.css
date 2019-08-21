@@ -85,3 +85,18 @@
     transform: scale(.9, .9)
   }
 }
+
+@media screen and (max-width:510px) {
+  .container-video {
+    /* width: 92.5%; */
+  }
+  .container-video img {
+    width: 368px;
+  }
+  .container-video iframe {
+    width: 368px;
+  }
+  .ItemPost {
+    margin: 5px 0;
+  }
+}
