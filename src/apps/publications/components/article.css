@@ -1,0 +1,87 @@
+.Publications-Container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 10px;
+  flex-wrap: wrap;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.ItemPost {
+  border: 3px solid gainsboro;
+  max-width: auto;
+  height: auto;
+}
+
+.ItemPost .title {
+  width: 100%;
+  background-color: #cecece70;
+  font-size: 1.2em;
+  text-align: center;
+  padding: 8px 0;
+  margin: 0;
+  
+}
+
+.start {
+  text-align: center;
+  margin: 0;
+  padding: 5px 0;
+}
+
+.container-video {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.btn-container {
+  /* margin: 15px 0; */
+  /* width: 100%; */
+}
+
+.postbtn {
+  margin-top: 2px;
+  background: #126798;
+  border: none;
+  outline: 0;
+  width: 100%;
+  padding: 12px 0;
+  border-radius: 4px;
+  align-self: center;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+
+
+.postbtn:active {
+  animation-name: toggle;
+  animation-timing-function: ease-out;
+  animation-duration: .8s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes toggle {
+  0% {
+    transform: scale(.8, .8)
+  }
+  30% {
+    transform: scale(.7, .7)
+  }
+  50% {
+    transform: scale(.7, .7)
+  }
+  80% {
+    transform: scale(.8, .8)
+  }
+  100% {
+    transform: scale(.9, .9)
+  }
+}

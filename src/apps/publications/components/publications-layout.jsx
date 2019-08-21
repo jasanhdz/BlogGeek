@@ -1,11 +1,7 @@
 import React from 'react';
-import './publications-layout.css'
+
 const LayoutPublications = props => {
-  return (
-    <div className="Publications-Container">
-        {props.children}
-    </div>
-  )
+  return props.children   
 }
 
 export default LayoutPublications;

@@ -10,7 +10,9 @@ class Post extends React.Component {
     this.db.settings(settings);
 
     this.state = {
-      user: firebase.auth().currentUser
+      user: firebase.auth().currentUser,
+      itemImg: true,
+      itemVideo: true,
     }
   }
   createPost(uid, emailUser, title, description, imageLink, videoLink) {
@@ -41,7 +43,10 @@ class Post extends React.Component {
   render() {
     return (
       <PostLayout>
-        <Article />
+        <Article 
+          itemImg={this.state.itemImg}
+          itemVideo={this.state.itemVideo}
+        />
       </PostLayout>
     )
   }
