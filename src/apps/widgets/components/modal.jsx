@@ -15,14 +15,18 @@ function ModalLogin(props) {
 
           <form onSubmit={props.handleSubmit} action="POST" className="col">
             <div className="modal-form-group">
-              <label
-                className={props.focusActive}
-                htmlFor="Email"
-              >Email
-                </label>
-              <input ref={props.setRefEmail} onFocus={props.handleFocus} onBlur={props.removeFocus} type="email" />
-              <label className={props.focusActive} htmlFor="Password">Password</label>
-              <input ref={props.setRefPass} onFocus={props.handleFocus} onBlur={props.removeFocus} type="password" name="password" id="" />
+              <div className="form-group">
+                <label
+                  className={props.focusActive}
+                  htmlFor="Email"
+                >Email
+                  </label>
+                <input ref={props.setRefEmail} onFocus={props.handleFocus} onBlur={props.removeFocus} type="email" />
+              </div>
+              <div className="form-group">
+                <label className={props.focusActive} htmlFor="Password">Password</label>
+                <input ref={props.setRefPass} onFocus={props.handleFocus} onBlur={props.removeFocus} type="password" name="password" id="" />
+              </div>
               <button onSubmit={props.handleSubmit} className="formButton" type="submit">Iniciar sesión</button>
               <div className="social">
                 <p>Ingresa con:</p>

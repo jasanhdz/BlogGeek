@@ -55,11 +55,70 @@
   color: #7acc2d;;
 }
 
+.Textarea-description {
+  background-color: #e0e0e0;
+  color: black;
+  font-size: 1.4em;
+}
+
 @media screen and (max-width: 676px) {
+  .post-container {
+    height: 80vh;
+  }
   .form-group {
     max-width: auto;
+    overflow-x: scroll;
   }
   .form-group input {
     max-width: 260px;
+  }
+}
+
+@media screen and (max-width:515px) {
+  .form-group {
+    max-width: 90%;
+  }
+  .form-group input {
+    max-width: 100%;
+    height: auto;
+    width: 100%;
+  }
+  .post-col-one {
+    height: 80%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .formButton {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width:475px) {
+  .Textarea-description {
+    width: 100%;
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (max-width:298px) {
+  .post-container {
+    font-size: .8em;
+  }
+  .formButton {
+    font-size: .8em;
+    min-width: 100%;
+  }
+  .post-col-one {
+    /* align-self: flex-start; */
+    height: 100%;
+    justify-content: space-evenly;
+    border-right: 1px dashed #126798;
+    margin-left: 1.5px;
+  }
+  .Textarea-description {
+    width: 100%;
+    font-size: .8em;
   }
 }

@@ -24,7 +24,8 @@ const ModalPost = props => {
             {/* Description */}
             <div className="form-group">
               <label className={props.focusActive} htmlFor="Description">Descripción</label>
-              <input ref={props.setRefNames} onFocus={props.handleFocus} onBlur={props.removeFocus} type="text" />
+              {/* <input ref={props.setRefNames} onFocus={props.handleFocus} onBlur={props.removeFocus} type="text" /> */}
+              <textarea className="Textarea-description" ref={props.setRefNames} name="description" onBlur={props.removeFocus} cols="30" rows="10"></textarea>
             </div>
 
             {/* Enlace del video */}

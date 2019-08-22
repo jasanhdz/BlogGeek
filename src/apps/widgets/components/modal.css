@@ -5,7 +5,6 @@
   position: fixed;
   left: 0;
   right: 0;
-  top: 100px;
   background:  white;
   padding: 20px;
   border-radius: 20px;
@@ -76,14 +75,13 @@
 
 .modal-form-group {
   display: flex;
-  justify-content: center;
+  height: 100%;
   flex-direction: column;
-  padding: 10px 5px;
-  margin-bottom: 5px;
-  /* border: 1px solid yellow; */
-  align-items: space-between;
-  min-height: 150px;
+  justify-content: space-between;
+
   color: #126798;
+  align-items: center;
+
 }
 
 .Labelactive {
@@ -106,6 +104,13 @@
   font-size: 1em;
   padding-top: 5px;
 }
+
+
+.form-group.registry {
+  height: 100%;
+  margin: 0;
+}
+
 
 .formButton {
   margin-top: 10px;
@@ -134,7 +139,8 @@
   grid-gap: 10px;
   grid-template: 80% 20% / repeat(2, 1fr);
   grid-template-areas: "col1 col2" "col3 col3";
-  padding: 0 20px;
+  padding: 0 9px;
+  height: 80vh;
 }
 
 
@@ -143,7 +149,7 @@
 }
 .col:nth-child(2) {
   grid-area: col2;
-  border-left: 3px solid #126798;
+  border-left: 3px dashed #126798;
   padding-left: 20px;
 }
 .col:nth-child(1) h2 {
@@ -177,19 +183,49 @@
   .Modal {
     max-width: 80%;
     font-size: .8em;
+    top: 50px;
   }
-  .modal-form-group {
-    height: 100%;
-    justify-content: space-evenly;
-  }
-
+ 
   .col:nth-child(2) {
     padding: 0;
+  }
+
+  .Icons {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .Icons a {
+    margin: 8px 8px;
   }
 }
 
 @media screen and (max-width: 500px) {
   .Modal {
     top: 50px;
+  }
+  .col:nth-child(2) {
+    border: 1px solid #126798;
+  }
+}
+
+@media screen and (max-width: 385px) {
+  .Wrapper {
+    grid-template-columns: 40% 60%;
+    font-size: .9em;
+  }
+}
+
+@media screen and (max-width: 385px) {
+  .Wrapper {
+    grid-template-columns: 38% 66%;
+    font-size: .8em;
+  }
+  .formButton.btncenter {
+    width: 100%;
+  }
+  .col:nth-child(1) {
+    font-size: .73em;
+    flex-wrap: wrap;
+    display: flex;
   }
 }

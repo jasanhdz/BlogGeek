@@ -14,14 +14,21 @@ function ModalLogin(props) {
 
           <form onSubmit={props.handleSubmitRegistry} action="POST" className="col">
             <div className="modal-form-group">
-              <label className={props.focusActive} htmlFor="Nombres">Nombres</label>
-              <input ref={props.setRefNames} onFocus={props.handleFocus} onBlur={props.removeFocus} type="text" />
+              
+              <div className="form-group">
+                <label className={props.focusActive} htmlFor="Nombres">Nombres</label>
+                <input ref={props.setRefNames} onFocus={props.handleFocus} onBlur={props.removeFocus} type="text" />
+              </div>
 
-              <label className={props.focusActive} htmlFor="Email">Email</label>
-              <input ref={props.setRefEmail} onFocus={props.handleFocus} onBlur={props.removeFocus} type="email" />
+              <div className="form-group">
+                <label className={props.focusActive} htmlFor="Email">Email</label>
+                <input ref={props.setRefEmail} onFocus={props.handleFocus} onBlur={props.removeFocus} type="email" />
+              </div>
 
-              <label className={props.focusActive} htmlFor="Password">Password</label>
-              <input ref={props.setRefPass} onFocus={props.handleFocus} onBlur={props.removeFocus} type="password" name="password" id="" />
+              <div className="form-group">
+                <label className={props.focusActive} htmlFor="Password">Password</label>
+                <input ref={props.setRefPass} onFocus={props.handleFocus} onBlur={props.removeFocus} type="password" name="password" id="" />
+              </div>
               
               <button onSubmit={props.handleSubmitRegistry} className="formButton" type="submit">Guardar</button>
             </div>
