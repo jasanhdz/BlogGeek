@@ -148,14 +148,15 @@ class Home extends Component {
   modalPostOnChange = e => {
     this.setState({
       modalPostActive: true,
-      login: false,
+      // login: false,
       modalVisibility: true
     })
     console.log('click');
   }
   handleClick = event => {
     this.setState({
-      modalVisibility: true
+      modalVisibility: true,
+      modalPostActive: false
     })
     console.log('click', this.state.modalVisibility);
   }
@@ -163,6 +164,7 @@ class Home extends Component {
     this.setState({
       modalVisibility: false
     })
+    console.log('click', this.state.modalVisibility);
   }
   handleFocus = event => {
     this.setState({

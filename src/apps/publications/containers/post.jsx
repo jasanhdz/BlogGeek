@@ -10,14 +10,14 @@ class Post extends React.Component {
     this.db = firebase.firestore();
     const settings = { timestampsInSnapshots: true }
     this.db.settings(settings);
-
     this.state = {
       user: firebase.auth().currentUser,
       itemImg: true,
       itemVideo: true,
       title: null,
       description: null,
-      linkVideo: null
+      linkVideo: null,
+      payload: []
     }
   }
   createPost(uid, emailUser, title, description, imageLink, videoLink) {
@@ -38,13 +38,29 @@ class Post extends React.Component {
     })
   }
 
+  async checkAllPost() {
+     await this.db.collection('posts').onSnapshot(querySnapshot => {
+      if(querySnapshot) {
+        let data = [];
+        querySnapshot.forEach(element => {
+          Object.values(data.push(element.data())); 
+        })
+        this.setState({
+          payload: data
+        })
+        // console.log('Soy yo :)', this.state.payload);
+      } else {
+        console.log('No hay Posts............... :(');
+      }
+    })
+  }
+
   // Aquí vamos a validar cuando poner el ModalPost
   ModalPostPayload() {
     if(this.props.modalPostActive) {
       return (
         <ModalContainer>
           <PostModal 
-            closeModal={this.closeModal}
             handleChange={this.handleChange}
             submitPost={this.submitPost}
             closeModal={this.props.closeModal}
@@ -66,10 +82,36 @@ class Post extends React.Component {
     console.log(this.state.title);
     console.log(this.state.description);
     console.log(this.state.linkVideo);
+
+    const user = firebase.auth().currentUser;
+
+    user ? console.log('Usuario Loggeado') : console.log('No estás loggeado......');
+
+    if(user) {
+      this.createPost(
+        user.uid,
+        'jasan_azael@hotmail.zx',
+        this.state.title,
+        this.state.description,
+        'no hay imagen',
+        this.state.linkVideo,
+  
+      )
+      .then(resp => {
+        this.props.closeModal
+        alert('Se ha realizado correctamente el Post')
+      })
+      .catch('Error al realizar el Post');
+    } else {
+      alert('Por favor loggeate antes de publicar algó');
+    }
+
   }
 
-  registerPost = event => {
-    console.log(this.state);
+  
+  async componentDidMount() {
+    await this.checkAllPost();
+    // console.log(this.state.payload);
   }
 
   render() {
@@ -81,6 +123,7 @@ class Post extends React.Component {
         <Article 
           itemImg={this.state.itemImg}
           itemVideo={this.state.itemVideo}
+          data={this.state.payload}
         />
       </PostLayout>
     )
