@@ -46,6 +46,15 @@ body {
   100% {
     transform: scale(.9, .9)
   }
+}
+
+@media screen and (max-width:500px) {
+  .Signout {
+    height: 100%;
+  }
+  .Signout button {
+    height: 40px;
+  }
 }.Header-container {
   background-color:#126798;
   display: flex;
@@ -266,18 +275,22 @@ body {
   border-bottom: 1px solid white;
   box-shadow: inset 0 -0.2em rgb(0, 0, 0, .4);
   outline: 0;
+  font-size: 1.5em;
+  text-align: center;
+  font-family: sans-serif;
+  font-weight: 530;
 }
 
-/* .btnPrimary {
-  background: #7acc2d;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: bold;
-  transition: 0.5s;
-  padding: 10px 15px;
-  max-width: 120px;
+.Form-group label {
+  font-size: 1.5em;
   text-align: center;
-  border-radius: 6px;
-} */
+}
+
+.btnPrimary:active {
+  animation-name: toggle;
+  animation-timing-function: ease-out;
+  animation-duration: .8s;
+}
 
 @media screen and (max-width: 768px) {
   .Footer {
@@ -309,6 +322,50 @@ body {
 textarea {
   background-color: #14232b75;
   color: white;
+}
+
+@media screen and (max-width:392px) {
+  .Footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+@media screen and (max-width:350px) {
+  .Item.Form {
+    width: auto;
+    align-items: center;
+  }
+  .Form-group {
+    padding-left: 0;
+    margin-left: 0;
+    width: 90%;
+    align-items: center;
+    align-self: center;
+  }
+  .Form-group label, .Form-group input {
+    width: 90%;
+    font-size: 1.2em;
+  }
+  .Checklist-form {
+    text-align: center;
+  }
+  .Item.Comentarios label {
+    /* text-align: center; */
+    color: #0d212d;
+    font-size: 1.1em;
+    text-decoration: underline;
+    font-weight: bold;
+    /* padding-left: 20px; */
+  }
+  textarea {
+    width: 210px;
+    height: 150px;
+  }
+  .btnPrimary {
+    max-width: 100%;
+    width: 83%;
+  }
 }.Modal {
   max-width: 768px;
   width: auto;
@@ -316,7 +373,6 @@ textarea {
   position: fixed;
   left: 0;
   right: 0;
-  top: 100px;
   background:  white;
   padding: 20px;
   border-radius: 20px;
@@ -387,14 +443,13 @@ textarea {
 
 .modal-form-group {
   display: flex;
-  justify-content: center;
+  height: 100%;
   flex-direction: column;
-  padding: 10px 5px;
-  margin-bottom: 5px;
-  /* border: 1px solid yellow; */
-  align-items: space-between;
-  min-height: 150px;
+  justify-content: space-between;
+
   color: #126798;
+  align-items: center;
+
 }
 
 .Labelactive {
@@ -417,6 +472,13 @@ textarea {
   font-size: 1em;
   padding-top: 5px;
 }
+
+
+.form-group.registry {
+  height: 100%;
+  margin: 0;
+}
+
 
 .formButton {
   margin-top: 10px;
@@ -445,7 +507,8 @@ textarea {
   grid-gap: 10px;
   grid-template: 80% 20% / repeat(2, 1fr);
   grid-template-areas: "col1 col2" "col3 col3";
-  padding: 0 20px;
+  padding: 0 9px;
+  height: 80vh;
 }
 
 
@@ -454,7 +517,7 @@ textarea {
 }
 .col:nth-child(2) {
   grid-area: col2;
-  border-left: 3px solid #126798;
+  border-left: 3px dashed #126798;
   padding-left: 20px;
 }
 .col:nth-child(1) h2 {
@@ -488,20 +551,50 @@ textarea {
   .Modal {
     max-width: 80%;
     font-size: .8em;
+    top: 50px;
   }
-  .modal-form-group {
-    height: 100%;
-    justify-content: space-evenly;
-  }
-
+ 
   .col:nth-child(2) {
     padding: 0;
+  }
+
+  .Icons {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .Icons a {
+    margin: 8px 8px;
   }
 }
 
 @media screen and (max-width: 500px) {
   .Modal {
     top: 50px;
+  }
+  .col:nth-child(2) {
+    border: 1px solid #126798;
+  }
+}
+
+@media screen and (max-width: 385px) {
+  .Wrapper {
+    grid-template-columns: 40% 60%;
+    font-size: .9em;
+  }
+}
+
+@media screen and (max-width: 385px) {
+  .Wrapper {
+    grid-template-columns: 38% 66%;
+    font-size: .8em;
+  }
+  .formButton.btncenter {
+    width: 100%;
+  }
+  .col:nth-child(1) {
+    font-size: .73em;
+    flex-wrap: wrap;
+    display: flex;
   }
 }.Post {
   color: #126798;
@@ -594,19 +687,23 @@ textarea {
 }
 
 @media screen and (max-width:510px) {
-  .container-video {
-    /* width: 92.5%; */
-  }
   .container-video img {
-    width: 368px;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
   }
   .container-video iframe {
-    width: 368px;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
   }
   .ItemPost {
     margin: 5px 0;
   }
-}.post-container {
+}
+.post-container {
   display: flex;
   width: auto;
   /* border: 1px solid red; */
@@ -663,11 +760,70 @@ textarea {
   color: #7acc2d;;
 }
 
+.Textarea-description {
+  background-color: #e0e0e0;
+  color: black;
+  font-size: 1.4em;
+}
+
 @media screen and (max-width: 676px) {
+  .post-container {
+    height: 80vh;
+  }
   .form-group {
     max-width: auto;
+    overflow-x: scroll;
   }
   .form-group input {
     max-width: 260px;
+  }
+}
+
+@media screen and (max-width:515px) {
+  .form-group {
+    max-width: 90%;
+  }
+  .form-group input {
+    max-width: 100%;
+    height: auto;
+    width: 100%;
+  }
+  .post-col-one {
+    height: 80%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .formButton {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width:475px) {
+  .Textarea-description {
+    width: 100%;
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (max-width:298px) {
+  .post-container {
+    font-size: .8em;
+  }
+  .formButton {
+    font-size: .8em;
+    min-width: 100%;
+  }
+  .post-col-one {
+    /* align-self: flex-start; */
+    height: 100%;
+    justify-content: space-evenly;
+    border-right: 1px dashed #126798;
+    margin-left: 1.5px;
+  }
+  .Textarea-description {
+    width: 100%;
+    font-size: .8em;
   }
 }
