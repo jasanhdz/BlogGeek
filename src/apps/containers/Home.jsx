@@ -8,7 +8,6 @@ import Modal from '../widgets/components/modal.jsx';
 import Post from '../publications/containers/post.jsx';
 // import Autentication from '../../Firebase/auth/authentication';
 import ModaRegistry from '../widgets/components/modal-registry.jsx';
-import PostModal from '../widgets/components/modal-post.jsx';
 
 class Home extends Component {
   state = {
@@ -19,7 +18,8 @@ class Home extends Component {
     login: true,
     ImgProfile: false,
     user: null,
-    uriProfile: null 
+    uriProfile: null,
+    data: null
   }
 
 // Métodos para acceder a los Servicios de Firebase
@@ -148,13 +148,15 @@ class Home extends Component {
   modalPostOnChange = e => {
     this.setState({
       modalPostActive: true,
-      login: false,
+      // login: false,
       modalVisibility: true
     })
+    console.log('click');
   }
   handleClick = event => {
     this.setState({
-      modalVisibility: true
+      modalVisibility: true,
+      modalPostActive: false
     })
     console.log('click', this.state.modalVisibility);
   }
@@ -162,6 +164,7 @@ class Home extends Component {
     this.setState({
       modalVisibility: false
     })
+    console.log('click', this.state.modalVisibility);
   }
   handleFocus = event => {
     this.setState({
@@ -282,19 +285,14 @@ class Home extends Component {
         </ModalContainer>
       )
     }
-    if(this.state.modalPostActive) {
-      return (
-        <ModalContainer>
-          <PostModal 
-            closeModal={this.closeModal}
-          />
-        </ModalContainer>
-      )
-    }
+   
   }
   render() {
     return (
       <HomeLayout>
+        {
+          this.state.modalVisibility && this.login()
+        }
         <Header 
           handleClick={this.handleClick}
           signOutClick={this.signOutClick}
@@ -303,11 +301,12 @@ class Home extends Component {
           Signout={this.Signout}
           modalPostOnChange={this.modalPostOnChange}
         />
-        {
-          this.state.modalVisibility && this.login()
-        }
         <PublicationsLayout>
-          <Post />
+          <Post 
+            modalVisibility={this.state.modalVisibility}
+            modalPostActive={this.state.modalPostActive}
+            closeModal={this.closeModal}
+          />
         </PublicationsLayout>
         <Footer />
       </HomeLayout>

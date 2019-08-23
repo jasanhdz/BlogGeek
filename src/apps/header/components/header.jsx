@@ -18,7 +18,7 @@ function PayloadImageProfile(uri, user) {
 }
 
 const Header = props => {
-  console.log(props.user)
+  // console.log(props.user)
   return (
     <div className="Header-container">
       <div className="Header">
