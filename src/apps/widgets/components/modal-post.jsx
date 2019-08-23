@@ -4,7 +4,7 @@ import './modal-post.css';
 const ModalPost = props => {
   return (
     <div className="Overlay">
-      
+     
       <div className="Modal">
         
         <div className="post-container">
@@ -14,24 +14,23 @@ const ModalPost = props => {
             <h4>Empieza ahora</h4>
           </div>
 
-          <form onSubmit={props.handleSubmitRegistry} action="POST" className="post-col-two">
+          <form onSubmit={props.submitPost} action="POST" className="post-col-two">
             {/* Titulos */}
             <div className="form-group">
               <label className={props.focusActive} htmlFor="Title">Titulo</label>
-              <input ref={props.setRefNames} onFocus={props.handleFocus} onBlur={props.removeFocus} type="text" />
+              <input name="title" onChange={props.handleChange} onFocus={props.handleFocus} onBlur={props.removeFocus} type="text" />
             </div>
 
             {/* Description */}
             <div className="form-group">
               <label className={props.focusActive} htmlFor="Description">Descripción</label>
-              {/* <input ref={props.setRefNames} onFocus={props.handleFocus} onBlur={props.removeFocus} type="text" /> */}
-              <textarea className="Textarea-description" ref={props.setRefNames} name="description" onBlur={props.removeFocus} cols="30" rows="10"></textarea>
+              <textarea name="description" onChange={props.handleChange} className="Textarea-description" name="description" onBlur={props.removeFocus} cols="30" rows="10"></textarea>
             </div>
 
             {/* Enlace del video */}
             <div className="form-group">
               <label className={props.focusActive} htmlFor="Linkvideo">Enlace del video </label>
-              <input ref={props.setRefNames} onFocus={props.handleFocus} onBlur={props.removeFocus} type="text" />
+              <input name="linkVideo" onChange={props.handleChange} onFocus={props.handleFocus} onBlur={props.removeFocus} type="text" />
             </div>
 
             {/* Cargar Imagen */}
@@ -40,7 +39,7 @@ const ModalPost = props => {
               <input type="file"  id="btnUploadFile" />
             </div>
             
-            <button onSubmit={props.handleSubmitRegistry} className="formButton" type="submit">Guardar</button>
+            <button onSubmit={props.submitPost} className="formButton" type="submit">Guardar</button>
           </form>
           
           <button onClick={props.closeModal} className="Modal-close"/>

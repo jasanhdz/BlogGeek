@@ -7,19 +7,19 @@ function ponerVideo() {
     <article className="ItemPost">
       <p className="title">Item 1</p>
       <div className="start">
-        <a class="post-estrellita-llena">*</a>
-        <a class="post-estrellita-llena">*</a>
-        <a class="post-estrellita-llena">*</a>
-        <a class="post-estrellita-llena">*</a>
-        <a class="post-estrellita-vacia">*</a>
+        <a className="post-estrellita-llena">*</a>
+        <a className="post-estrellita-llena">*</a>
+        <a className="post-estrellita-llena">*</a>
+        <a className="post-estrellita-llena">*</a>
+        <a className="post-estrellita-vacia">*</a>
       </div>
 
       <div className="container-video">
-      <iframe width="500" height="345"
+        <iframe width="500" height="345"
           className="video" 
-          src="https://www.youtube.com/embed/gN9e40PE8VI" frameborder="0" 
+          src="https://www.youtube.com/embed/gN9e40PE8VI" 
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-          allowfullscreen></iframe>
+        ></iframe>
       </div>
 
       <div className="btn-container">
@@ -39,11 +39,11 @@ function ponerImg() {
     <article className="ItemPost">
       <p className="title">Item 1</p>
       <div className="start">
-        <a class="post-estrellita-llena">*</a>
-        <a class="post-estrellita-llena">*</a>
-        <a class="post-estrellita-llena">*</a>
-        <a class="post-estrellita-llena">*</a>
-        <a class="post-estrellita-vacia">*</a>
+        <a className="post-estrellita-llena">*</a>
+        <a className="post-estrellita-llena">*</a>
+        <a className="post-estrellita-llena">*</a>
+        <a className="post-estrellita-llena">*</a>
+        <a className="post-estrellita-vacia">*</a>
       </div>
       
       <div className="container-video">
