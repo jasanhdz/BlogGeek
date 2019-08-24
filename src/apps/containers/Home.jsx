@@ -141,7 +141,7 @@ class Home extends Component {
       })
 
       const configuration = {
-        url : 'http://localhost:9000/'
+        url : 'https://jasanhdz.github.io/BlogGeek/src/htmls/'
       }
 
       result.user.sendEmailVerification(configuration)
