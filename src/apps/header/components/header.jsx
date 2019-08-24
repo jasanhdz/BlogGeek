@@ -28,6 +28,11 @@ const Header = props => {
         <div className="Header-info">
           <h2>VideoBlog Geek</h2>
           <h3>Encuentra los Videos mas poderosos de los geeks</h3>
+          
+          <figure onClick={props.signOutClick} className="Header-avatar">
+          {PayloadImageProfile(props.ImgProfile, props.user)}
+          </figure>
+          
           {
             !props.user ? <a 
               className="btnPrimary" 
@@ -37,17 +42,14 @@ const Header = props => {
             </a> : <Welcome Signout={props.Signout} user={props.user} />
           }
         </div>
-        <figure onClick={props.signOutClick} className="Header-avatar">
-          {PayloadImageProfile(props.ImgProfile, props.user)}
-        </figure>
       </div>
       <div className="Menu-container">
         <nav className="Menu">
           <ul>
-            <li>Todos los post</li>
+            <li onClick={props.allPost}>Todos los post</li>
           </ul>
           <ul>
-            <li>Mis Post</li>
+            <li onClick={props.mypost}>Mis Post</li>
           </ul>
           <ul>
             <li onClick={props.modalPostOnChange} >Realizar un Post</li>
