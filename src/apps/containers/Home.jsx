@@ -10,17 +10,65 @@ import Post from '../publications/containers/post.jsx';
 import ModaRegistry from '../widgets/components/modal-registry.jsx';
 
 class Home extends Component {
-  state = {
-    modalPostActive: false,
-    modalVisibility: false,
-    focusActive: null,
-    registry: false,
-    login: true,
-    ImgProfile: false,
-    user: null,
-    uriProfile: null,
-    data: null
+  constructor() {
+    super()
+    this.db = firebase.firestore();
+    const settings = { timestampsInSnapshots: true }
+    this.db.settings(settings);
+
+    this.state = {
+      modalPostActive: false,
+      modalVisibility: false,
+      focusActive: null,
+      registry: false,
+      login: true,
+      ImgProfile: false,
+      user: null,
+      uriProfile: null,
+      data: null,
+      payload: []
+    }
   }
+
+  async checkAllPost() {
+    await this.db.collection('posts').onSnapshot(querySnapshot => {
+     if(querySnapshot) {
+       let data = [];
+         querySnapshot.forEach(element => {
+           data.push(element.data());
+       })
+       this.setState({
+         payload: data,
+         
+       })
+       // console.log('Soy yo :)', this.state.payload);
+     } else {
+       console.log('No hay Posts............... :(');
+     }
+   })
+ }
+
+ async checkPostByUser(emailUser) {
+  await this.db.collection('posts')
+  .where('author', '==', emailUser)
+  .onSnapshot(querySnapshot => {
+    if(querySnapshot) {
+      let data = [];
+        querySnapshot.forEach(element => {
+          data.push(element.data());
+      })
+      this.setState({
+        payload: data,
+        
+      })
+      // console.log('Soy yo :)', this.state.payload);
+    } else {
+      console.log('No hay Posts............... :(');
+    }
+  })
+ }
+
+
 
 // Métodos para acceder a los Servicios de Firebase
   // **** Servicios de Autenticación ****
@@ -93,7 +141,7 @@ class Home extends Component {
       })
 
       const configuration = {
-        url : 'http://localhost:9000/'
+        url : 'https://jasanhdz.github.io/BlogGeek/src/htmls/'
       }
 
       result.user.sendEmailVerification(configuration)
@@ -114,7 +162,7 @@ class Home extends Component {
   }
 
   // Observador del cambio de Sesión en el browser
-  componentDidMount() {
+  async componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       if(user) {
         console.log('existe un usuario');
@@ -127,6 +175,7 @@ class Home extends Component {
         } 
       }
     })
+    await this.checkAllPost();
   }
 
   // Llamamos a la función Salir de sesión desde el botón SignOut que se carga al hacer Login.
@@ -247,6 +296,27 @@ class Home extends Component {
     this.authAccoundFacebook();
   }
 
+  handleClickAllPost = event => {
+    console.log('click');
+    const user = firebase.auth().currentUser;
+    if(user) {
+      this.checkAllPost();
+    } else {
+      alert('Debes estar loggeado.');
+    }
+  } 
+
+  handleClickMyPost = event => {
+    console.log('Click');
+    const user = firebase.auth().currentUser
+    // console.log(user.email);
+    if(user) {
+      this.checkPostByUser(user.email);
+    } else {
+      alert('Debes estár authenticado para visualizar tus post');
+    }
+  }
+
   login = () => {
     if(this.state.login) {
       return (
@@ -300,12 +370,15 @@ class Home extends Component {
           user={this.state.user}
           Signout={this.Signout}
           modalPostOnChange={this.modalPostOnChange}
+          mypost={this.handleClickMyPost}
+          allPost={this.handleClickAllPost}
         />
         <PublicationsLayout>
           <Post 
             modalVisibility={this.state.modalVisibility}
             modalPostActive={this.state.modalPostActive}
             closeModal={this.closeModal}
+            payload={this.state.payload}
           />
         </PublicationsLayout>
         <Footer />

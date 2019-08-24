@@ -1,3 +1,10 @@
 .Post {
   color: #126798;
 }
+
+.PublicationMessage {
+  text-align: center;
+  color: #126798;
+  font-size: 1.5em;
+  font-weight: bold;
+}

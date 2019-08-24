@@ -75,6 +75,8 @@
   }
   .btnPrimary {
     align-self: center;
+    max-width: 100%;
+    width: 83%;
   }
 }
 
@@ -93,8 +95,17 @@
 }
 
 textarea {
-  background-color: #14232b75;
-  color: white;
+  background-color: #ffffffd1;
+  color: black;
+}
+
+@media screen and (max-width:600px) {
+  .Item.Comentarios {
+    width: 80%;
+  }
+  .Item.Form {
+    width: 90%;
+  }
 }
 
 @media screen and (max-width:392px) {
@@ -132,7 +143,7 @@ textarea {
     /* padding-left: 20px; */
   }
   textarea {
-    width: 210px;
+    width: 100%;
     height: 150px;
   }
   .btnPrimary {

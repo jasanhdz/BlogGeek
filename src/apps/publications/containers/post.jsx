@@ -4,6 +4,8 @@ import PostLayout from '../components/post-layout.jsx';
 import Article from '../components/article.jsx';
 import ModalContainer from '../../widgets/containers/modal.jsx';
 import PostModal from '../../widgets/components/modal-post.jsx';
+
+
 class Post extends React.Component {
   constructor() {
     super()
@@ -35,23 +37,6 @@ class Post extends React.Component {
     })
     .catch(error => {
       console.log(error);
-    })
-  }
-
-  async checkAllPost() {
-     await this.db.collection('posts').onSnapshot(querySnapshot => {
-      if(querySnapshot) {
-        let data = [];
-        querySnapshot.forEach(element => {
-          Object.values(data.push(element.data())); 
-        })
-        this.setState({
-          payload: data
-        })
-        // console.log('Soy yo :)', this.state.payload);
-      } else {
-        console.log('No hay Posts............... :(');
-      }
     })
   }
 
@@ -90,7 +75,7 @@ class Post extends React.Component {
     if(user) {
       this.createPost(
         user.uid,
-        'jasan_azael@hotmail.zx',
+        user.email,
         this.state.title,
         this.state.description,
         'no hay imagen',
@@ -108,12 +93,6 @@ class Post extends React.Component {
 
   }
 
-  
-  async componentDidMount() {
-    await this.checkAllPost();
-    // console.log(this.state.payload);
-  }
-
   render() {
     return (
       <PostLayout>
@@ -123,7 +102,7 @@ class Post extends React.Component {
         <Article 
           itemImg={this.state.itemImg}
           itemVideo={this.state.itemVideo}
-          data={this.state.payload}
+          data={this.props.payload}
         />
       </PostLayout>
     )

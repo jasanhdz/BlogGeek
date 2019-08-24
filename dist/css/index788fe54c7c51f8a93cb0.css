@@ -107,8 +107,8 @@ body {
 
 .Header-avatar img {
   border-radius: 60%;
-  height: 80px;
-  width: 80px;
+  height: 130px;
+  width: 130px;
   transition: 0.6s;
   /* transform: translateY(100px); */
 }
@@ -183,6 +183,10 @@ body {
     padding: 0 10px;
     margin-top: 10px;
 
+  }
+  .Header-avatar img {
+    height: 130px;
+    width: 130px;
   }
   .Header-avatar {
     margin-left: 0;
@@ -302,6 +306,8 @@ body {
   }
   .btnPrimary {
     align-self: center;
+    max-width: 100%;
+    width: 83%;
   }
 }
 
@@ -320,8 +326,17 @@ body {
 }
 
 textarea {
-  background-color: #14232b75;
-  color: white;
+  background-color: #ffffffd1;
+  color: black;
+}
+
+@media screen and (max-width:600px) {
+  .Item.Comentarios {
+    width: 80%;
+  }
+  .Item.Form {
+    width: 90%;
+  }
 }
 
 @media screen and (max-width:392px) {
@@ -359,7 +374,7 @@ textarea {
     /* padding-left: 20px; */
   }
   textarea {
-    width: 210px;
+    width: 100%;
     height: 150px;
   }
   .btnPrimary {
@@ -598,6 +613,13 @@ textarea {
   }
 }.Post {
   color: #126798;
+}
+
+.PublicationMessage {
+  text-align: center;
+  color: #126798;
+  font-size: 1.5em;
+  font-weight: bold;
 }.Publications-Container {
   display: flex;
   justify-content: space-evenly;
@@ -610,8 +632,9 @@ textarea {
 
 .ItemPost {
   border: 3px solid gainsboro;
-  max-width: auto;
+  max-width: 360px;
   height: auto;
+  margin: 8px 0;
 }
 
 .ItemPost .title {
@@ -635,11 +658,6 @@ textarea {
   display: flex;
   justify-content: center;
 }
-.btn-container {
-  /* margin: 15px 0; */
-  /* width: 100%; */
-}
-
 .postbtn {
   margin-top: 2px;
   background: #126798;
@@ -686,6 +704,50 @@ textarea {
   }
 }
 
+.Article-footer {
+  display: flex;
+  /* width: 100%; */
+  height: auto;
+  justify-content: space-between;
+  background-color: #126798;
+  padding: 0 10px;
+  color: white;
+  font-size: 0.8em;
+}
+
+.PostDescription {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.PostDescription p {
+  width: 90%;
+}
+
+.container-video iframe {
+  width: 100%;
+}
+
+@media screen and (max-width:1100px) {
+  .ItemPost {
+    /* width: 50%; */
+    max-width: 50%;
+  }
+}
+@media screen and (max-width:748px) {
+  .ItemPost {
+    max-width: 46%;
+  }
+}
+
+@media screen and (max-width:640px) {
+  .ItemPost {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
 @media screen and (max-width:510px) {
   .container-video img {
     width: 100%;
@@ -701,6 +763,9 @@ textarea {
   }
   .ItemPost {
     margin: 5px 0;
+  }
+  .Article-footer {
+    font-size: .6em;
   }
 }
 .post-container {

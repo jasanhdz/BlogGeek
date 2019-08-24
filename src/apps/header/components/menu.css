@@ -50,8 +50,8 @@
 
 .Header-avatar img {
   border-radius: 60%;
-  height: 80px;
-  width: 80px;
+  height: 130px;
+  width: 130px;
   transition: 0.6s;
   /* transform: translateY(100px); */
 }
@@ -126,6 +126,10 @@
     padding: 0 10px;
     margin-top: 10px;
 
+  }
+  .Header-avatar img {
+    height: 130px;
+    width: 130px;
   }
   .Header-avatar {
     margin-left: 0;

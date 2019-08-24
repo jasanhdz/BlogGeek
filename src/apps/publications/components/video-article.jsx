@@ -1,7 +1,8 @@
 import React from 'react';
+import { obtenerFecha } from '../../../util/date-format.js';
 
 const VideoArticle = props => {
-  // console.log('aca----', props.title);
+  console.log('aca---->', obtenerFecha(props.date.toDate()));
   return (
     <article className="ItemPost">
       <p className="title">{props.title}</p>
@@ -28,6 +29,13 @@ const VideoArticle = props => {
           target="blank">Video
         </a>
 
+      </div>
+      <div className="PostDescription" >
+        <p><strong>Description:</strong> {props.description}</p>
+      </div>
+      <div className="Article-footer">
+        <p>Fecha: {obtenerFecha(props.date.toDate())}</p>
+        <p>Author: {props.author}</p>
       </div>
     </article>
   )
