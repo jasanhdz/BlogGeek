@@ -1,0 +1,5 @@
+#Para hacer un hosting en firebase tenemos que traernos la carpeta dist
+# Ya que firebase no sube todo el proyecto, solo sube la carpeta o archivo
+# publico es por eso que para hacer un deploy en Firebase tenemos que subir
+# todos los archivos que dependen de nuestro proyecto principal.
+dist/
