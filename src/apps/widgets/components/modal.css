@@ -184,6 +184,7 @@
     max-width: 80%;
     font-size: .8em;
     top: 50px;
+    padding-bottom: 30px;
   }
  
   .col:nth-child(2) {

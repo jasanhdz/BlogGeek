@@ -1,7 +1,7 @@
 import React from 'react';
 import { obtenerFecha } from '../../../util/date-format.js';
 
-const ImgArticle = props => {
+const VideoPersonal = props => {
     return (
         <article className="ItemPost">
           <p className="title">{props.title}</p>
@@ -14,10 +14,11 @@ const ImgArticle = props => {
           </div>
           
           <div className="container-video">
-            <img 
-            src={props.imageLink} 
-            alt="Imagen" 
-            width="500" height="345"
+            <video 
+              src={props.imageLink} 
+              alt="Imagen" 
+              width="500" height="345"
+              controls={true}
             />
           </div>
     
@@ -42,4 +43,4 @@ const ImgArticle = props => {
       )
 }
 
-export default ImgArticle;
+export default VideoPersonal;

@@ -31,7 +31,10 @@ class Home extends Component {
   }
 
   async checkAllPost() {
-    await this.db.collection('posts').onSnapshot(querySnapshot => {
+    await this.db.collection('posts')
+    .orderBy('date', 'asc')
+    .orderBy('title', 'asc')
+    .onSnapshot(querySnapshot => {
      if(querySnapshot) {
        let data = [];
          querySnapshot.forEach(element => {
@@ -50,6 +53,7 @@ class Home extends Component {
 
  async checkPostByUser(emailUser) {
   await this.db.collection('posts')
+  .orderBy('date', 'asc')
   .where('author', '==', emailUser)
   .onSnapshot(querySnapshot => {
     if(querySnapshot) {
@@ -165,8 +169,8 @@ class Home extends Component {
   async componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       if(user) {
-        console.log('existe un usuario');
-        console.log(user.photoURL, 'aqui.....');
+        // console.log('existe un usuario');
+        // console.log(user.photoURL, 'aqui.....');
         if(user.photoURL) {
             this.setState({
               uriProfile: user.photoURL,
