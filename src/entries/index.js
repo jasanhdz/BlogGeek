@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 import Home from '../apps/containers/Home.jsx';
 import Entry from '../Firebase/entry/index';
+
 const app = document.getElementById('app');
 const modal = document.getElementById('modal-container');
 

@@ -27,6 +27,8 @@ class Post extends React.Component {
       imageLink: null,
     }
   }
+
+
   createPost(uid, emailUser, title, description, imageLink, videoLink) {
     return this.db.collection('posts').add({
       uid: uid,
