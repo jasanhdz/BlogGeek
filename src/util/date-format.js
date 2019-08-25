@@ -9,3 +9,10 @@ export function obtenerFecha (timeStamp) {
 
     return [day, month, year].join('/')
 }
+
+
+const fecha = new Date();
+export const DATE_NOW = `${fecha.getDate()}:${fecha.getMonth()+1}:${fecha.getFullYear()}:${fecha.getHours()}:${fecha.getMinutes()}:${fecha.getSeconds()}`
+
+    
+

@@ -9,9 +9,9 @@ const ModalPost = props => {
         
         <div className="post-container">
           <div className="post-col-one">
-            <h2>Bienvenido al VideoBlog Geek</h2>
-            <h3>Publica, aprende y conecta con otros por medio de videos Geek.</h3>
-            <h4>Empieza ahora</h4>
+            <h2>Realiza un Post</h2>
+            <h3>Comparte un video interesante para la comunidad</h3>
+            <h4>Comparte ahora</h4>
           </div>
 
           <form onSubmit={props.submitPost} action="POST" className="post-col-two">
@@ -36,7 +36,10 @@ const ModalPost = props => {
             {/* Cargar Imagen */}
             <div className="form-group">
               <label className={props.focusActive} htmlFor="Payload">Cargar imagen</label>
-              <input type="file"  id="btnUploadFile" />
+              <input type="file" onChange={props.loadingFile} 
+                className='btnUploadFile' ref={props.refLoading}
+                style={props.styleLoadImgPost}
+              />
             </div>
             
             <button onSubmit={props.submitPost} className="formButton" type="submit">Guardar</button>

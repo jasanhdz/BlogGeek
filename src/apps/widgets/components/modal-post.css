@@ -61,16 +61,33 @@
   font-size: 1.4em;
 }
 
+.btnUploadFile {
+  overflow-x: hidden !important;
+  height: 100% !important;
+  background-color: #4d8eb3;
+}
+
 @media screen and (max-width: 676px) {
   .post-container {
     height: 80vh;
+    flex-direction: column;
+  }
+  .post-col-one {
+    width: 100%;
+    border: none;
+
+  }
+  .post-col-two {
+    justify-content: start;
+    overflow-y: scroll;
+    height: 100%;
+    border-left: 5px solid #4d8eb3;
   }
   .form-group {
-    max-width: auto;
-    overflow-x: scroll;
+    max-width: 100%;
   }
-  .form-group input {
-    max-width: 260px;
+  .formButton {
+    width: 90%;
   }
 }
 
