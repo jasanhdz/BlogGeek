@@ -26,10 +26,12 @@ exports.enviarNotificacion = functions.firestore
   .onCreate(dataSnapshot => {
     const title = dataSnapshot.data().title
     const description = dataSnapshot.data().description
+    const author = dataSnapshot.data().author
 
     const mensaje = {
       data: {
-        titulo: title,
+        author: author,
+        title: title,
         description: description
       },
       topic: 'NuevosPosts'

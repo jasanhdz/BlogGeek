@@ -63,7 +63,9 @@ navigator.serviceWorker
 // Recibir las notificaciones cuando el usuario esta foreground
   // callNotificacionesForeground() {
     messagin.onMessage(payload => {
-      alert(`Ya tenemos un nuevo post. Revisalo, se llamá ${payload.data.title}`)
+      alert(`${payload.data.author} ha publicado un nuevo post: ${payload.data.title}`)
+      console.log(`${payload.data.author} ha publicado un nuevo post: ${payload.data.title}`)
+      console.log(payload);
     }) 
   // }
 

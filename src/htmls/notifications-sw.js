@@ -11,11 +11,11 @@ firebase.initializeApp({
 const messaging = firebase.messaging()
 
 messaging.setBackgroundMessageHandler(payload => {
-  const titleNotification = `Ya tenemos un nuevo Post se llamá ${payload.data.title}`;
+  const titleNotification = `${payload.data.author} ha publicado un nuevo post: ${payload.data.title}`;
   const optionesNotificatios = {
-    body: payload.data.title,
-    icon: '../../assets/bell.png',
-    click_action: "https://jasanhdz.github.io/BlogGeek/src/htmls/"
+    body: `acerca de: ${payload.data.description}`,
+    icon: '../assets/notification.png',
+    click_action: 'https://jasanhdz.github.io/BlogGeek/src/htmls/',
     // click_action: "http://localhost:9000/"
   }
 
