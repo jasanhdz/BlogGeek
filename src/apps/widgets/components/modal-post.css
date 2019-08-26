@@ -101,7 +101,6 @@
     width: 100%;
   }
   .post-col-one {
-    border: 1px solid red;
     align-self: center;
     display: flex;
     flex-direction: column;
