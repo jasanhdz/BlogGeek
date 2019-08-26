@@ -24,13 +24,13 @@ exports.registrarTopico = functions.firestore
 exports.enviarNotificacion = functions.firestore
   .document('/posts/{idPost}')
   .onCreate(dataSnapshot => {
-    const titulo = dataSnapshot.data().titulo
-    const descripcion = dataSnapshot.data().descripcion
+    const title = dataSnapshot.data().title
+    const description = dataSnapshot.data().description
 
     const mensaje = {
       data: {
-        titulo: titulo,
-        descripcion: descripcion
+        titulo: title,
+        description: description
       },
       topic: 'NuevosPosts'
     }
