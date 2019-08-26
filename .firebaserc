@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "bloggeekplatzi-66a71"
+    "default": "bloggeekplatzi-66a71",
+    "blogeek": "bloggeekplatzi-66a71"
   }
 }

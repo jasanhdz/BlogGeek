@@ -5,35 +5,41 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ]
-  },
-  "redirects": [
-    {
-      "source": "/posts",
-      "destination": "/",
-      "type": 301
-    },
-    {
-      "source": "/post",
-      "destination": "/",
-      "type": 301
-    }
-  ],
-  "rewrites" : [
-    {
-      "source": "/**",
-      "destination": "/index.html"
-    }
-  ],
-  "headers": [
-    {
-      "source": "**/*.@(jpg|jpeg|gif|png|mp4)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "vale": "max-age=7200"
-        }
+    ],
+    "redirects": [
+      {
+        "source": "/posts",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/post",
+        "destination": "/",
+        "type": 301
+      }
+    ],
+    "rewrites" : [
+      {
+        "source": "/**",
+        "destination": "/index.html"
+      }
+    ],
+    "headers": [
+      {
+        "source": "**/*.@(jpg|jpeg|gif|png|mp4)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "vale": "max-age=7200"
+          }
+        ]
+      }
+    ],
+    "functions": {
+      "predeploy": [
+        "npm --prefix functions run lint"
       ]
     }
-  ]
+  }
 }
+

@@ -28,8 +28,8 @@ navigator.serviceWorker
       return messagin.getToken()
     })
     .then(token => {
-      console.log(token);
-      console.log("arriba", token)
+      console.log('token');
+      console.log(token)
       const db = firebase.firestore()
       db.settings({timestampsInSnapshots: true})
       db.collection('tokens')
