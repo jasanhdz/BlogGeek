@@ -28,7 +28,8 @@ navigator.serviceWorker
       return messagin.getToken()
     })
     .then(token => {
-      console.log("token", token)
+      console.log(token);
+      console.log("arriba", token)
       const db = firebase.firestore()
       db.settings({timestampsInSnapshots: true})
       db.collection('tokens')
@@ -40,6 +41,7 @@ navigator.serviceWorker
       })
     })
 
+    // Obtener el Token cuando se refresca 
     messagin.onTokenRefresh(() => {
       messagin.getToken()
       .then(token => {
@@ -56,6 +58,7 @@ navigator.serviceWorker
         })
       })
     })
+
 
 // Recibir las notificaciones cuando el usuario esta foreground
   // callNotificacionesForeground() {
