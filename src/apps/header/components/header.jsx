@@ -1,7 +1,7 @@
 import React from 'react';
 import marca from '../../../assets/logo.png';
 import avatarLogout from '../../../assets/usuario.png';
-import avatarLogin from '../../../assets/perfil.jpg';
+import avatarLogin from '../../../assets/usuario_auth.png';
 import Welcome from './welcome.jsx';
 import './menu.css';
 
@@ -22,12 +22,16 @@ const Header = props => {
   return (
     <div className="Header-container">
       <div className="Header">
-        <figure className="Header-logotipo">
-          <img src={marca} alt=""/>
-        </figure>
         <div className="Header-info">
-          <h2>VideoBlog Geek</h2>
-          <h3>Encuentra los Videos mas poderosos de los geeks</h3>
+          <figure className="Header-logotipo">
+            <img src={marca} alt=""/>
+          </figure>
+          <div className="header-pages-description">
+            <h2>VideoBlog Geek</h2>
+            <h3>Encuentra los Videos mas poderosos de los geeks</h3>
+          </div>
+        </div>
+        <div className="center">
           
           <figure onClick={props.signOutClick} className="Header-avatar">
           {PayloadImageProfile(props.ImgProfile, props.user)}

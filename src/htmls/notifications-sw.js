@@ -16,7 +16,6 @@ messaging.setBackgroundMessageHandler(payload => {
     body: `acerca de: ${payload.data.description}`,
     icon: '../assets/notification.png',
     click_action: 'https://jasanhdz.github.io/BlogGeek/src/htmls/',
-    // click_action: "http://localhost:9000/"
   }
 
   return self.registration.showNotification(titleNotification, optionesNotificatios)

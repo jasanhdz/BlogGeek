@@ -101,14 +101,21 @@
     width: 100%;
   }
   .post-col-one {
-    height: 80%;
+    border: 1px solid red;
     align-self: center;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+  .post-col-one h2, .post-col-one h3, .post-col-one h4 {
+    margin: 3px 0;
+  }
   .formButton {
     width: 90%;
+  }
+  .Textarea-description {
+    height: 70px;
+    margin: 0;
   }
 }
 
