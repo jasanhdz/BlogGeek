@@ -11,12 +11,12 @@ firebase.initializeApp({
 const messaging = firebase.messaging()
 
 messaging.setBackgroundMessageHandler(payload => {
-  const titleNotification = 'Ya tenemos un nuevo Post';
+  const titleNotification = `Ya tenemos un nuevo Post se llamá ${payload.data.title}`;
   const optionesNotificatios = {
     body: payload.data.title,
     icon: '../../assets/bell.png',
-    // click_action: "https://jasanhdz.github.io/BlogGeek/src/htmls/"
-    click_action: "http://localhost:9000/"
+    click_action: "https://jasanhdz.github.io/BlogGeek/src/htmls/"
+    // click_action: "http://localhost:9000/"
   }
 
   return self.registration.showNotification(titleNotification, optionesNotificatios)
